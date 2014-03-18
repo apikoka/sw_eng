@@ -157,6 +157,8 @@ void CDIP_ProgrammingDoc::OnFileOpen()
 	Image.m_BMPHeader.biWidth=Image.m_uiWidth=myDlg.FileOpenDlg_GetCol();
 	Image.m_BMPHeader.biHeight=Image.m_uiHeight=myDlg.FileOpenDlg_GetRow();
 
-	
+	Image.MyClass_ReadFile(filename);
+
+
 	UpdateAllViews(NULL);
 }

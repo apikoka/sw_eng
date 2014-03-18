@@ -63,7 +63,7 @@ void CDIP_ProgrammingView::OnDraw(CDC* pDC)
 		StretchDIBits(pDC->GetSafeHdc(),
 			0, 0, pDoc->Image.m_uiWidth, pDoc->Image.m_uiHeight,
 			0, 0, pDoc->Image.m_BMPHeader.biWidth, pDoc->Image.m_BMPHeader.biHeight,
-			pDoc->Image.m_pcBMP[0], (LPBITMAPINFO)&pDoc->Image.m_BMPHeader, DIB_RGB_COLORS, SRCCOPY);
+			pDoc->Image.m_pcBMP, (LPBITMAPINFO)&pDoc->Image.m_BMPHeader, DIB_RGB_COLORS, SRCCOPY);
 	}
 
 }

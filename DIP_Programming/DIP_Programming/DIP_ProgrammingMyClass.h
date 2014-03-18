@@ -6,7 +6,16 @@ public:
 	CDIP_ProgrammingMyClass(void);
 	~CDIP_ProgrammingMyClass(void);
 
+	void MyClass_MakeBMP(void);
 
+
+
+	void MyClass_ReadFile(CString filepath);
+
+	//memory related functions
+	UCHAR** MyClass_MemoryAlloc2D(UINT32 height, UINT32 width);
+
+	void MyClass_MemoryFree(UCHAR** pp);
 
 	BITMAPINFOHEADER m_BMPHeader;
 	UCHAR**			 m_pcBMP;
