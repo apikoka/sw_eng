@@ -49,18 +49,23 @@ void CDIP_ProgrammingMyClass::MyClass_ReadFile(CString filepath)
 	m_uiFileTotalSize=ftell(m_fp);
 	rewind(m_fp);
 
-	if(m_pcBMP!=NULL)
-	{
-		MyClass_MemoryFree(m_pcBMP);
-	}
-
-	m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3);
-	if(m_pcBMP==NULL)
-		return ;
 	m_pcImgBuf=MyClass_MemoryAlloc2D(m_uiHeight,m_uiWidth);
+
 	if(m_pcImgBuf==NULL)
 		return ;
+
 	fread(&m_pcImgBuf[0][0],sizeof(UINT8), m_uiWidth*m_uiHeight, m_fp);
+
+	if(m_pcBMP!=NULL)
+		MyClass_MemoryFree(m_pcBMP);
+
+	if(!m_uiWidth%4)	
+		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3);
+	else
+		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3+(4-m_uiWidth%4));	
+
+	if(m_pcBMP==NULL)
+		return ;
 
 	MyClass_MakeBMP();
 
