@@ -145,20 +145,18 @@ void CDIP_ProgrammingDoc::OnFileOpen()
 	CFileDialog fileopen(true);
 	CFileOpenDlg myDlg;
 
-	if( fileopen.DoModal() == IDCANCEL )
+	if( fileopen.DoModal() == IDCANCEL )	//if user choose 'cancel'
 		return ;
 
-	CString filename = fileopen.GetPathName();
-
-
-	if(myDlg.DoModal() == IDCANCEL)
+	CString filename = fileopen.GetPathName();	//get file name
+	
+	if(myDlg.DoModal() == IDCANCEL)	//if user choose 'cancel'
 		return ;
 
-	Image.m_BMPHeader.biWidth=Image.m_uiWidth=myDlg.FileOpenDlg_GetCol();
-	Image.m_BMPHeader.biHeight=Image.m_uiHeight=myDlg.FileOpenDlg_GetRow();
+	Image.m_BMPHeader.biWidth=Image.m_uiWidth=myDlg.FileOpenDlg_GetCol();	//get column size
+	Image.m_BMPHeader.biHeight=Image.m_uiHeight=myDlg.FileOpenDlg_GetRow();	//get row size
 
-	Image.MyClass_ReadFile(filename);
-
+	Image.MyClass_ReadFile(filename);	//read file
 
 	UpdateAllViews(NULL);
 }
