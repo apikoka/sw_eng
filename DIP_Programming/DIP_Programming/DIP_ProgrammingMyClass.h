@@ -8,13 +8,10 @@ public:
 
 	void MyClass_MakeBMP(void);
 
-
-
 	void MyClass_ReadFile(CString filepath);
 
 	//memory related functions
 	UCHAR** MyClass_MemoryAlloc2D(UINT32 height, UINT32 width);
-
 	void MyClass_MemoryFree(UCHAR** pp);
 
 	BITMAPINFOHEADER m_BMPHeader;
@@ -22,7 +19,6 @@ public:
 	UCHAR**			 m_pcImgBuf;
 	UINT			 m_uiHeight;
 	UINT			 m_uiWidth;
-
 
 	FILE*           m_fp;
 	UINT32          m_uiFileTotalSize;
