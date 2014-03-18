@@ -10,6 +10,7 @@
 #endif
 
 #include "DIP_ProgrammingDoc.h"
+#include "FileOpenDlg.h"
 
 #include <propkey.h>
 
@@ -22,6 +23,7 @@
 IMPLEMENT_DYNCREATE(CDIP_ProgrammingDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CDIP_ProgrammingDoc, CDocument)
+	ON_COMMAND(ID_FILE_OPEN, &CDIP_ProgrammingDoc::OnFileOpen)
 END_MESSAGE_MAP()
 
 
@@ -135,3 +137,26 @@ void CDIP_ProgrammingDoc::Dump(CDumpContext& dc) const
 
 
 // CDIP_ProgrammingDoc commands
+
+
+void CDIP_ProgrammingDoc::OnFileOpen()
+{
+	// TODO: Add your command handler code here
+	CFileDialog fileopen(true);
+	CFileOpenDlg myDlg;
+
+	if( fileopen.DoModal() == IDCANCEL )
+		return ;
+
+	CString filename = fileopen.GetPathName();
+
+
+	if(myDlg.DoModal() == IDCANCEL)
+		return ;
+
+	Image.m_BMPHeader.biWidth=Image.m_uiWidth=myDlg.FileOpenDlg_GetCol();
+	Image.m_BMPHeader.biHeight=Image.m_uiHeight=myDlg.FileOpenDlg_GetRow();
+
+	
+	UpdateAllViews(NULL);
+}

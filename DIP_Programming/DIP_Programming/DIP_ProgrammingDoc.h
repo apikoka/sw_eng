@@ -4,7 +4,7 @@
 
 
 #pragma once
-
+#include "DIP_ProgrammingMyClass.h"
 
 class CDIP_ProgrammingDoc : public CDocument
 {
@@ -17,6 +17,7 @@ public:
 
 // Operations
 public:
+	CDIP_ProgrammingMyClass Image;
 
 // Overrides
 public:
@@ -45,4 +46,6 @@ protected:
 	// Helper function that sets search content for a Search Handler
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
+public:
+	afx_msg void OnFileOpen();
 };

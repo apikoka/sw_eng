@@ -50,7 +50,7 @@ BOOL CDIP_ProgrammingView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CDIP_ProgrammingView drawing
 
-void CDIP_ProgrammingView::OnDraw(CDC* /*pDC*/)
+void CDIP_ProgrammingView::OnDraw(CDC* pDC)
 {
 	CDIP_ProgrammingDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -58,6 +58,14 @@ void CDIP_ProgrammingView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: add draw code for native data here
+	if(pDoc->Image.m_pcBMP)
+	{
+		StretchDIBits(pDC->GetSafeHdc(),
+			0, 0, pDoc->Image.m_uiWidth, pDoc->Image.m_uiHeight,
+			0, 0, pDoc->Image.m_BMPHeader.biWidth, pDoc->Image.m_BMPHeader.biHeight,
+			pDoc->Image.m_pcBMP[0], (LPBITMAPINFO)&pDoc->Image.m_BMPHeader, DIB_RGB_COLORS, SRCCOPY);
+	}
+
 }
 
 

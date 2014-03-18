@@ -42,6 +42,9 @@
     <ClInclude Include="FileOpenDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DIP_ProgrammingMyClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DIP_Programming.cpp">
@@ -60,6 +63,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileOpenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DIP_ProgrammingMyClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

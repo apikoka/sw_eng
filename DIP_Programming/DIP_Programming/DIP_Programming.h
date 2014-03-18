@@ -1,6 +1,7 @@
 
 // DIP_Programming.h : main header file for the DIP_Programming application
 //
+#pragma warning (disable:4996 )
 #pragma once
 
 #ifndef __AFXWIN_H__

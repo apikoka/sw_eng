@@ -20,7 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -103,6 +103,7 @@
   <ItemGroup>
     <ClInclude Include="DIP_Programming.h" />
     <ClInclude Include="DIP_ProgrammingDoc.h" />
+    <ClInclude Include="DIP_ProgrammingMyClass.h" />
     <ClInclude Include="DIP_ProgrammingView.h" />
     <ClInclude Include="FileOpenDlg.h" />
     <ClInclude Include="MainFrm.h" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="DIP_Programming.cpp" />
     <ClCompile Include="DIP_ProgrammingDoc.cpp" />
+    <ClCompile Include="DIP_ProgrammingMyClass.cpp" />
     <ClCompile Include="DIP_ProgrammingView.cpp" />
     <ClCompile Include="FileOpenDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
@@ -135,4 +137,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="DIP_Programming.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
