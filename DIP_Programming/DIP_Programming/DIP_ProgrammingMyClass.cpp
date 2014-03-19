@@ -51,40 +51,23 @@ void CDIP_ProgrammingMyClass::MyClass_ReadFile(CString filepath)
 	m_uiFileTotalSize=ftell(m_fp);	//get total file size
 	rewind(m_fp);	//go back to start point
 
-<<<<<<< HEAD
 	m_pcImgBuf=MyClass_MemoryAlloc2D(m_uiHeight,m_uiWidth);
 
-	if(m_pcImgBuf==NULL)
+	if(m_pcImgBuf==NULL)	//already allocated?!
 		return ;
 
 	fread(&m_pcImgBuf[0][0],sizeof(UINT8), m_uiWidth*m_uiHeight, m_fp);
 
-	if(m_pcBMP!=NULL)
-		MyClass_MemoryFree(m_pcBMP);
+	if(m_pcBMP!=NULL)	//if fail to allocate	
+		MyClass_MemoryFree(m_pcBMP);	//free allocated memory
 
 	if(!m_uiWidth%4)	
 		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3);
 	else
-		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3+(4-m_uiWidth%4));	
+		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3+(4-m_uiWidth%4));	//if it's not multiple of 4
 
-	if(m_pcBMP==NULL)
-		return ;
-=======
-	if(m_pcBMP!=NULL)	//already allocated?!
-	{
-		MyClass_MemoryFree(m_pcBMP);	//free allocated memory
-	}
-
-	m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3);
-	
 	if(m_pcBMP==NULL)	//if fail to allocate	
 		return ;
-
-	m_pcImgBuf=MyClass_MemoryAlloc2D(m_uiHeight,m_uiWidth);
-
-	if(m_pcImgBuf==NULL)	//if fail to allocate
-		return ;
->>>>>>> origin/Commentary
 
 	fread(&m_pcImgBuf[0][0],sizeof(UINT8), m_uiWidth*m_uiHeight, m_fp);	//read only one frame
 
