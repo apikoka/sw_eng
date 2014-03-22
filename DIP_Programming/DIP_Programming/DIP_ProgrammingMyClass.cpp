@@ -61,7 +61,7 @@ void CDIP_ProgrammingMyClass::MyClass_ReadFile(CString filepath)
 	if(m_pcBMP!=NULL)	//if fail to allocate	
 		MyClass_MemoryFree(m_pcBMP);	//free allocated memory
 
-	if(!m_uiWidth%4)	
+	if(!(m_uiWidth%4))	
 		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3);
 	else
 		m_pcBMP=MyClass_MemoryAlloc2D(m_uiHeight, m_uiWidth*3+(4-m_uiWidth%4));	//if it's not multiple of 4
