@@ -11,6 +11,7 @@
 #include "resource.h"       // main symbols
 
 
+
 // CDIP_ProgrammingApp:
 // See DIP_Programming.cpp for the implementation of this class
 //

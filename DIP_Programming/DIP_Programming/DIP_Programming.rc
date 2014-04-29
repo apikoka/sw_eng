@@ -67,19 +67,32 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 147, 134
+IDD_DIALOG1 DIALOGEX 0, 0, 121, 82
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Dialog"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     EDITTEXT        IDC_EDIT1,51,15,40,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_EDIT2,52,33,40,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "OK",IDOK,15,101,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,81,101,50,14
+    DEFPUSHBUTTON   "OK",IDOK,7,58,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,64,58,50,14
     LTEXT           "Width",IDC_STATIC,19,17,20,8
     LTEXT           "Height",IDC_STATIC,19,36,22,8
     LTEXT           "px",IDC_STATIC,94,20,9,8
     LTEXT           "px",IDC_STATIC,94,37,9,8
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 107, 69
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "3",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,13,26,20,10
+    CONTROL         "5",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,44,26,20,10
+    CONTROL         "7",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,76,26,20,10
+    DEFPUSHBUTTON   "확인",IDOK,14,43,34,14
+    PUSHBUTTON      "취소",IDCANCEL,59,43,33,14
+    CTEXT           "Gaussian mask size",IDC_STATIC,22,7,62,9
 END
 
 
@@ -94,9 +107,17 @@ BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 140
+        RIGHTMARGIN, 114
         TOPMARGIN, 7
-        BOTTOMMARGIN, 127
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 100
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 62
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -111,6 +132,63 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About DIP_Programming"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "DIP_Programming, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2014",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_DIALOG3 DIALOGEX 0, 0, 119, 69
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "3",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,17,25,20,10
+    CONTROL         "5",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,52,25,20,10
+    CONTROL         "7",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,84,25,20,10
+    DEFPUSHBUTTON   "OK",IDOK,21,48,32,14
+    PUSHBUTTON      "Cancel",IDCANCEL,69,48,32,14
+    LTEXT           "Median mask size",IDC_STATIC,29,7,56,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 112
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 62
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -200,6 +278,19 @@ BEGIN
             END
         END
     END
+    POPUP "Enhancement"
+    BEGIN
+        MENUITEM "Original",                    ID_ENHANCEMENT_ORIGINAL
+        POPUP "Filter"
+        BEGIN
+            MENUITEM "Median",                      ID_FILTER_MEDIAN
+            MENUITEM "Gaussian",                    ID_FILTER_GAUSSIAN
+        END
+        POPUP "Transformation"
+        BEGIN
+            MENUITEM "Log",                         ID_TRANSFORMATION_POWER
+        END
+    END
     POPUP "&Help"
     BEGIN
         MENUITEM "&About DIP_Programming...",   ID_APP_ABOUT
@@ -242,23 +333,6 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Dialog
-//
-
-IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About DIP_Programming"
-FONT 8, "MS Shell Dlg", 0, 0, 0x1
-BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
-    LTEXT           "DIP_Programming, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2014",IDC_STATIC,42,26,114,8
-    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
 // Version
 //
 
@@ -294,25 +368,6 @@ BEGIN
         VALUE "Translation", 0x409, 1200
     END
 END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
-BEGIN
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 163
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 55
-    END
-END
-#endif    // APSTUDIO_INVOKED
 
 
 /////////////////////////////////////////////////////////////////////////////

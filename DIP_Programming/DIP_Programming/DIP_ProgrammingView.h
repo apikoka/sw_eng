@@ -3,7 +3,8 @@
 //
 
 #pragma once
-
+#include "GaussianFilter.h"
+#include "MedianFilter.h"
 
 class CDIP_ProgrammingView : public CView
 {
@@ -40,6 +41,11 @@ protected:
 // Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnTransformationPower();
+	afx_msg void OnEnhancementOriginal();
+	afx_msg void OnFilterMedian();
+	afx_msg void OnFilterGaussian();
 };
 
 #ifndef _DEBUG  // debug version in DIP_ProgrammingView.cpp
